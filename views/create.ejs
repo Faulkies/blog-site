@@ -1,0 +1,37 @@
+<%- include("partials/header.ejs") %>
+
+<div id="create-edit" class="min-vh-100 my-5">
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <% if(locals.postId){ %>
+                <div class="content col-12 col-xxl-8 col-xl-8 p-4">
+                    <h1 class="pt-serif">Edit Blog Post</h1>
+                    <form action="/update" method="POST">
+                        <input class="form-control form-colouring my-4" name="title" type="text" placeholder="Title" value="<%= postArray[postId].title%>" />
+                        <textarea name="post" class="form-control form-colouring text-area-create" placeholder="New Post"><%= postArray[postId].content%></textarea>
+                        <input hidden type="text" name="index" value="<%= postId %>">
+                        <div class="text-end m-1">
+                            <input class="btn btn-info fs-5 btn-lg my-4 button-rad" type="submit" value="Save">
+                        </div>
+                    </form>
+                </div>
+            <% } else { %>
+                <div class="content col-12 col-xxl-8 col-xl-8 p-4">
+                    <h1 class="pt-serif">New Blog Post</h1>
+                    <form action="/submit" method="POST">
+                        <input class="form-control form-colouring my-4" name="title" type="text" class="blog-post-input" placeholder="Title" />
+                        <textarea class="form-control form-colouring text-area-create" name="post" class="blog-post-input" placeholder="New Post"></textarea>
+                        <div class="text-end m-1">
+                            <input class="btn btn-info fs-5 btn-lg my-4 button-rad"  type="submit" value="SUBMIT" />
+                        </div>
+                    </form>
+                </div>
+            <% } %>
+        
+        </div>
+    </div>
+</div>
+
+
+<%- include("partials/footer.ejs") %>

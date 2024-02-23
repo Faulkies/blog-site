@@ -1,0 +1,60 @@
+<%- include("partials/header.ejs") %>
+<div class="min-vh-100">
+    <div class="container my-5">
+        <div class="row flex-row justify-content-evenly">
+            <div id="recent-posts" class="content col-3 .d-none .d-xl-block">
+                <div class="text-center my-4">
+                    <a href="/createPost"><button class="btn btn-info fs-5 btn-lg button-rad" style="width: 90%;">Create Post</button></a>
+                </div>
+                <% if(locals.postArray){ %>
+                    <div class="px-3">
+                        <p>RECENT POSTS</p>
+                    </div>
+                    <ul class="p-0">
+                        <% for(let i=0; i<postArray.length; i++){ %>
+                            <li class="p-1">
+                                <h3 class="fs-66 pt-serif"><a href="/viewPost/<%= i%>"> <%= postArray[i].title %> </a></h3>
+                                <hr>
+                            </li>
+                        <%}%>
+                    </ul>
+
+            <% } else { %>
+                <div class="text-center">
+                    <h2>No New Posts</h2>
+                </div>
+            <% } %>
+            </div>
+            <div class="content col-12 col-xxl-8 col-xl-8 p-4">
+                <% if(locals.postArray){ %>
+                        <ul class="p-0">
+                            <% for(let i=0; i<postArray.length; i++){ %>
+                                <li class="p-1">
+                                    <p class="fs-6 fw-light"><%= postArray[i].date %></p>
+                                    <h3 class="fs-2 pt-serif"><a href="/viewPost/<%= i%>"> <%= postArray[i].title %> </a></h3>
+                                    <p class="fs-5 my-4"><%= postArray[i].content %></p>
+                                    <hr>
+                                </li>
+                            <%}%>
+                        </ul>
+
+                <% } else { %>
+                    <div class="text-center">
+                        <h2>No Submitted posts</h2>
+                    </div>
+                <% } %>
+            </div>
+        </div>        
+    </div>        
+</div>
+
+
+
+
+
+
+
+
+
+
+<%- include("partials/footer.ejs") %>

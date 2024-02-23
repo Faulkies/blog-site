@@ -1,0 +1,22 @@
+<%- include("partials/header.ejs") %>
+
+<div class="min-vh-100">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="content col-lg-8 col-12 p-4 min-vh-80">
+                <h6><%= postArray[postId].date %></h6>
+                <h1><%= postArray[postId].title %></h1>
+                <p><%= postArray[postId].content %></p>
+
+                <form action="/delete" method="post">
+                    <input type="text" name="postId" hidden value="<%= postId %>">
+                    <input style="width: 99%;" class="btn btn-danger fs-5 btn-lg my-2 button-rad" type="submit" name="delete" value="Delete">
+                </form>
+                <a href="/edit/<%= postId %>"><input style="width: 99%;" class="btn btn-info fs-5 btn-lg my-2 button-rad" type="button" value="Edit"></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<%- include("partials/footer.ejs") %>
